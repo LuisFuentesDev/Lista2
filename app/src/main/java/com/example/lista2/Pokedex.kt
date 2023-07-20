@@ -4,7 +4,7 @@ data class Pokemon(val id: String, val nombre : String, val tipo : String, val i
 
 class Pokedex {
     companion object {
-        fun Pokedex(): List<Pokemon> {
+        fun getPokedex(): List<Pokemon> {
             val pokedex = mutableListOf<Pokemon>()
             pokedex.add(Pokemon("#001","Bulbasaur","Grass - Poison","https://img.pokemondb.net/sprites/bank/normal/bulbasaur.png"))
             pokedex.add(Pokemon("#002","Ivysaur","Grass - Poison","https://img.pokemondb.net/sprites/bank/normal/ivysaur.png"))

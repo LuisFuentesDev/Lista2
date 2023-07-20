@@ -8,7 +8,7 @@ import com.example.lista2.databinding.ItemLayoutBinding
 
 class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
-    val pokemones = mutableListOf<Pokemon>()
+    var pokemones = mutableListOf<Pokemon>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -20,10 +20,19 @@ class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val item = pokemones[position]
+        holder.bind(item)
     }
 
-    class ViewHolder(binding: ItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+    fun setData(pokedex: List<Pokemon>) {
+        this.pokemones = pokedex.toMutableList()
+    }
+
+    class ViewHolder(val binding: ItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(pokemon: Pokemon) {
+            binding.nombrePokemon.text = pokemon.nombre
+            binding.tipoPokemon.text = pokemon.tipo
+        }
 
     }
 }
